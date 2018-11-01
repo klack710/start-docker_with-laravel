@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+  nginx:
+    container_name: study-laravel_nginx
+    build:
+      context: ./nginx
+    volumes:
+      - ./web:/var/www
+    ports:
+      - "8000:80"
+    links:
+      - php-fpm
+
+  php-fpm:
+    container_name: study-laravel_php-fpm
+    build:
+      context: ./web
+    volumes:
+      - ./web:/var/www/:cached
+    links:
+      - mysql
+
+  mysql:
+    container_name: study-laravel_mysql
+    image: mysql:8.0.12
+    volumes:
+      - ./mysql:/var/lib/mysql
+      - ./mysql-conf.d:/etc/mysql/conf.d
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=study-laravel
+    ports:
+      - 3306:3306
+
+  mailhog:
+    container_name: study-laravel_mailhog
+    image: mailhog/mailhog
+    ports:
+      - "8025:8025"
+    environment:
+      MH_STORAGE: maildir
+      MH_MAILDIR_PATH: /tmp
+    volumes:
+      - .maildir:/tmp
