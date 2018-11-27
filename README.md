@@ -1,4 +1,4 @@
-# study-laravel
+## study-laravel
 ```
 docker exec -it study-laravel_php-fpm bash
 ```
@@ -14,10 +14,15 @@ localhost:8000で基本のページにアクセスできるようになる。
 
 willow710kut@gmail.com
 
-# laravelどこに配置？
-webディレクトリ配下にあるstudy-laravelっていうプロジェクトで作ったらとりあえず動きます
+## laravelどこに配置？
+appディレクトリ配下にstudy-laravelっていうプロジェクト名でプロジェクト作ったらとりあえず動きます
 
-# プロジェクト名を変えたい
+## 既存のLaravelプロジェクト使いたいんだけど
+appディレクトリ配下にgit cloneなりしてプロジェクト取ってきてください。
+
+その後、この下の *プロジェクト名を変えたい*の内容を実行してください
+
+## プロジェクト名を変えたい
 nginx/conf.d/host.conf
 ```
     root /var/www/study-laravel/public;
