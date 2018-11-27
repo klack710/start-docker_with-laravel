@@ -6,7 +6,7 @@ services:
     build:
       context: ./nginx
     volumes:
-      - ./web:/var/www
+      - ./app:/var/www
     ports:
       - "8000:80"
     links:
@@ -17,7 +17,7 @@ services:
     build:
       context: ./web
     volumes:
-      - ./web:/var/www/:cached
+      - ./app:/var/www/:cached
     links:
       - mysql
 
@@ -43,3 +43,4 @@ services:
       MH_MAILDIR_PATH: /tmp
     volumes:
       - .maildir:/tmp
+
